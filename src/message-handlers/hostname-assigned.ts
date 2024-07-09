@@ -5,7 +5,7 @@ import { eventHandler, URL_ASSIGNED } from '../events/event-handler.js';
 
 export default async function hostnameAssigned(message: HostnameAssignedMessage, websocket: HostipWebSocket, options: Options) {
     const port = options.port;
-    const listenAddress = options.listenAddress ?? 'localhost';
+    const listenAddress = options.connectAddress ?? 'localhost';
 
     if (typeof port === 'undefined') {
         console.error('Please specify a port e.g. run "tmole 80"');

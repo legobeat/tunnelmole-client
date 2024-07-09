@@ -16,8 +16,8 @@ export default function makeDispatchCommand(command: Command) {
     if (isNumber(arg0)) {
         options.port = parseInt(arg0);
     }
-    options.listenAddress = process.env['TUNNELMOLE_LISTEN_ADDRESS']
-    
+    options.connectAddress = process.env['TUNNELMOLE_CONNECT_ADDRESS']
+
     if (typeof arg1 === 'string' && arg1.toLowerCase() === 'as' && typeof domain === 'string') {
         options.domain = domain;
     } else if (typeof arg1 === 'string' && arg1 === "AS" && typeof domain !== 'string') {

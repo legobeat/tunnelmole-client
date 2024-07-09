@@ -8,7 +8,7 @@ import { Options } from "../options.js";
 
 export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
     const port = options.port;
-    const listenAddress = options.listenAddress ?? '127.0.0.1';
+    const listenAddress = options.connectAddress ?? '127.0.0.1';
     const { requestId, url, headers } = forwardedRequestMessage;
 
     // Prevent issue with gzip encoding

@@ -21,8 +21,8 @@ export default async function tunnelmole(options : Options)
         options.port = 3000;
     }
     // Listen on ipv4 localhost by default
-    if (options.listenAddress === undefined) {
-        options.listenAddress = '127.0.0.1';
+    if (options.connectAddress === undefined) {
+        options.connectAddress = '127.0.0.1';
     }
 
     if (options.setApiKey) {

@@ -1,6 +1,6 @@
 interface Options
 {
-    listenAddress?: string,
+    connectAddress?: string,
     port?: number,
     domain?: string,
     setApiKey?: string

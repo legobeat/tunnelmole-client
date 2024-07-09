@@ -8,6 +8,7 @@ import { Options } from "../options.js";
 
 export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
     const port = options.port;
+    const listenAddress = options.listenAddress ?? '127.0.0.1';
     const { requestId, url, headers } = forwardedRequestMessage;
 
     // Prevent issue with gzip encoding
@@ -16,7 +17,7 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
 
     // @todo: Once GET is working, add support for all HTTP methods
     const requestOptions : http.RequestOptions = {
-        hostname: '127.0.0.1',
+        hostname: listenAddress,
         method: forwardedRequestMessage.method,
         port: port,
         path: url,

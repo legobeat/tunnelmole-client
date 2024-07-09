@@ -15,6 +15,7 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
     if (isNumber(arg0)) {
         options.port = parseInt(arg0);
     }
+    options.listenAddress = process.env['TUNNELMOLE_LISTEN_ADDRESS']
     
     if (typeof command.args[1] === 'string' && command.args[1].toLowerCase() === 'as' && typeof command.args[2] === 'string') {
         options.domain = command.args[2];

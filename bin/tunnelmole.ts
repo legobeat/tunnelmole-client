@@ -12,7 +12,7 @@ sendMessage({
 import sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
 
-import program from 'commander';
+import { program } from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 import { sendMessage } from '../src/telemetry/send-message.js';
 import { initStorage } from '../src/node-persist/storage.js';

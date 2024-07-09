@@ -38,7 +38,6 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
          * Most browsers will make more than one request, for example an extra one for favicon.ico
          */
         response.on('end', () => {
-            //@ts-ignore
             const forwardedResponseMessage : ForwardedResponseMessage = {
                 type: forwardedResponse,
                 requestId,

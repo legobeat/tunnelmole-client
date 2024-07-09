@@ -123,6 +123,7 @@ export default async function tunnelmole(options : Options)
         eventHandler.on(URL_ASSIGNED, (url: string) => {
             resolve({
                 url,
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
                 on: () => {},
                 close: () => websocket.close()
             });

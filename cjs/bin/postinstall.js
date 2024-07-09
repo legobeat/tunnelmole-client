@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// eslint-disable-next-line
-const axios = require("axios");
 
 const installTelemetry = async () => {
   const telemetryEndpoint = `https://service.tunnelmole.com/tunnelmole-log-telemetry`;
@@ -9,20 +7,22 @@ const installTelemetry = async () => {
     return;
   }
 
-  // Need to find out what percentage of users who have installed Tunnelmole are using incompatible older Node versions
-  // Using axios for commonjs support and maximum backwards compatiblity with old node versions
-  axios
-    .post(telemetryEndpoint, {
-    type: "post-install",
-    data: {
-        nodeVersion: process.version ? process.version : "Unknown",
-        platform: process.platform ? process.platform : "Unknown"
-    }
-    }).then(function () {
-      // Ignore the response
-    }).catch(function () {
-      // Ignore the error
+  // Send platform version information
+  try {
+    await fetch({
+      method: 'POST',
+      url: telemetryEndpoint,
+      body: JSON.stringify({
+        type: "post-install",
+        data: {
+            nodeVersion: process.version ? process.version : "Unknown",
+            platform: process.platform ? process.platform : "Unknown"
+        },
+      })
     });
+  } catch(_err) {
+    // ignore telemetry request errors
+  }
 };
 
 installTelemetry();
